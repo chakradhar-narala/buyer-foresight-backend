@@ -1,69 +1,97 @@
-BuyerForeSight Backend Assignment
-Backend Engineer Assessment (Node.js)
-Core Task
+BuyerForeSight Backend - User Management API
 
-Build a User Management REST API that allows creating, reading, updating, and deleting users.
+A simple Node.js + Express REST API for managing users. You can create, read, update, and delete users.
 
-1. Endpoints
-Method	Endpoint	Description
-GET	/users	List all users (supports optional search and sort)
-GET	/users/:id	Get a single user by ID
-POST	/users	Create a new user
-PUT	/users/:id	Update an existing user
-DELETE	/users/:id	Delete a user
+### 1. Endpoints
 
-Optional Query Parameters for GET /users:
+* **GET /users**
+  List all users. Supports optional query parameters:
 
-search → filter by name or email
-sort → field to sort by (name, etc.)
-order → asc or desc
+  * `?search=` → filter by name or email
+  * `?sort=name&order=asc` → sort by field
 
-Example Requests:
+* **GET /users/:id**
+  Get a single user by ID.
 
-List all users:
-GET http://localhost:3000/users
-Get a user by ID:
-GET http://localhost:3000/users/1
-Create a user:
-POST http://localhost:3000/users
-Content-Type: application/json
+* **POST /users**
+  Create a new user. JSON body example:
 
-{
-  "name": "Alice",
-  "email": "alice@test.com"
-}
-Update a user:
-PUT http://localhost:3000/users/1
-Content-Type: application/json
+  ```json
+  {
+    "name": "Alice",
+    "email": "alice@test.com"
+  }
+  ```
 
-{
-  "name": "Alice Smith",
-  "email": "alice.smith@test.com"
-}
-Delete a user:
-DELETE http://localhost:3000/users/1
-2. Data
-This project uses in-memory storage by default.
-You can optionally switch to JSON file or SQLite for persistent storage.
-Note: In-memory storage means all data will reset when the server restarts.
-3. Tech Stack
-Backend: Node.js
-Framework: Express
-Data Storage: In-memory (can be swapped with JSON or SQLite)
-Testing: Postman / curl
-4. Getting Started (Local)
-Clone the repo:
+* **PUT /users/:id**
+  Update an existing user. JSON body example:
+
+  ```json
+  {
+    "name": "Alice Smith",
+    "email": "alice.smith@test.com"
+  }
+  ```
+
+* **DELETE /users/:id**
+  Delete a user by ID.
+
+---
+
+### 2. Data
+
+* Currently uses **in-memory storage**.
+* Optional alternatives: **JSON file** or **SQLite**.
+* **Note:** In-memory data resets when the server restarts.
+
+---
+
+### 3. Tech Stack
+
+* **Backend:** Node.js
+* **Framework:** Express
+* **Data Storage:** In-memory (or JSON / SQLite)
+* **Testing:** Postman / curl
+
+---
+
+### 4. Getting Started (Local)
+
+1. Clone the repo:
+
+```bash
 git clone https://github.com/chakradhar-narala/buyer-foresight-backend.git
 cd buyer-foresight-backend
-Install dependencies:
+```
+
+2. Install dependencies:
+
+```bash
 npm install
-Start the server:
+```
+
+3. Start the server:
+
+```bash
 node index.js
-Test endpoints in Postman or curl using http://localhost:3000 as the base URL.
-5. Deployment
-The API can be deployed on Render, Heroku, or any Node.js hosting service.
-Example live URL (Render): https://buyer-foresight-backend.onrender.com
-Replace localhost:3000 with the live URL when testing in Postman.
-6. Notes
-Currently, data is temporary. Restarting the server clears all users.
-Future improvements can include persistent storage, validation, or authentication.
+```
+
+4. Test endpoints in Postman or curl.
+   Base URL: `http://localhost:3000`
+
+---
+
+### 5. Deployment
+
+* Deploy on **Render**, **Heroku**, or any Node.js host.
+* Example Render URL: `https://buyer-foresight-backend.onrender.com`
+* Replace `localhost:3000` with the live URL for testing.
+
+---
+
+### 6. Notes
+
+* Data is **temporary** in this version. Restarting the server clears all users.
+* Future improvements: persistent storage, validation, authentication.
+
+---
